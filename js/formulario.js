@@ -1,5 +1,4 @@
 
-
 // *********************** Capturar el formulario ****************************
 
   // Captura el formulario con nombre "mainForm"
@@ -15,17 +14,11 @@
 
   function validateAllowedCharacters(input) {
     input.addEventListener('keypress', function(e) {
-
-        // Convierte la tecla presionada a minúscula para comparar
-        const key = e.key.toLowerCase();
-
         // Si el caracter no está en la lista de permitidos, se bloquea la entrada
-        if (!allowedCharacters.includes(key)) {
-          e.preventDefault();
+        if (!caracterAllowed.includes(e.key.toLowerCase())) {
+            e.preventDefault();
         }
-
-    })
-
+    });
   }
 
   // Aplica la validación a los campos "name" y "lastName"

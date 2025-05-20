@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+
+}
+
+.h2-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+
+form {
+  width: 100%;
+  max-width: clamp(320px, 90vw, 600px); // mobile-first
+  box-shadow: 1px 0px 6px 0px rgba(41, 44, 58, 0.9);
+  padding: 0.8rem;
+  margin: 0 auto;
+
+
+  @include respond(md) {
+    max-width: clamp(360px, 70vw, 520px); // clamp(min, ideal, max)
+    font-size: 1.6rem;
+    padding: 1.4rem;
+  }
+
+  @include respond(lg) {
+    max-width: clamp(480px, 40vw, 600px); // clamp(min, ideal, max)
+    font-size: 1.5rem;
+    padding: 1.2rem;
+  }
+
+  @include respond(xl) {
+    max-width: clamp(480px, 30vw, 560px); // clamp(min, ideal, max)
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+
+
+}
+
+//grupo para el input y el label
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+button[type="submit"],
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 1.5rem;
+  padding: 0.2rem;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: #bbb;
+}
+
+// *********los checkboxes desactivados se vean más tenues:*************//
+input[type="checkbox"]:disabled + label,
+.checkbox-grid label:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+fieldset.form-group {
+  border: 1px solid #ddd;
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  background-color: #fafafa;
+
+  legend {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.checkbox-grid,
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem 2rem;
+  padding: 0.5rem;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    transform: scale(1.2);
+    accent-color: var(--primary-color); // si tienes una variable de color
+  }
+}

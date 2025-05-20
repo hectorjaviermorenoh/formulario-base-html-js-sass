@@ -15,16 +15,29 @@ Este repositorio contiene un formulario base responsive desarrollado con **HTML*
 
 ---
 
+## 🚀 Instalacion sass
+ - Sass para el proyecto npm install -D sass
+ - Ejecutar sass  npm run sass
+
 ## 📁 Estructura del Proyecto
 
 ```bash
 formulario-base-html-js-sass/
+├── dist/
+│       ├── style.css.map
+│       └── style.css (generado)
 ├── assets/
 │   └── styles/
-│       ├── base.scss
-│       ├── _variables.scss
+│       ├── _breakpoints.scss
+│       ├── _components.scss
+│       ├── _darkmode.scss
+│       ├── _formulario.scss
+│       ├── _grid.scss
 │       ├── _reset.scss
-│       └── _form.scss
+│       ├── _variables.scss
+│       └── base.scss
 ├── index.html
-├── main.js
-└── style.css (generado)
+├── package.json
+└── main.js
+
+

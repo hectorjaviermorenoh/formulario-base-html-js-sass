@@ -2,7 +2,7 @@
 node_modules/
 
 # Archivos compilados por Sass (van a /dist)
-dist/
+# dist/
 
 # Sourcemaps opcionales
 *.css.map

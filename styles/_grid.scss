@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  padding: 1.6rem;
+  margin: 0 auto;
+
+  // background-color: rgb(255 165 0) !important;
+
+
+
+
+  @include respond(md) {
+    max-width: 720px;
+    // background-color: rgb(89, 0, 255) !important;
+
+
+  }
+
+  @include respond(lg) {
+    max-width: 960px;
+    // background-color: red !important;
+
+  }
+
+  @include respond(xl) {
+    max-width: 1140px;
+    // background-color: rgb(0, 255, 76) !important;
+
+
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.8rem;
+}
+.col {
+  padding: 0.8rem;
+  flex: 1 1 100%;
+
+  @include respond(md) {
+    flex: 0 0 50%;
+  }
+
+  @include respond(lg) {
+    flex: 0 0 33.3333%;
+  }
+}

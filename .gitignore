@@ -1,0 +1,22 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos compilados por Sass (van a /dist)
+dist/
+
+# Sourcemaps opcionales
+*.css.map
+
+# Configuración de IDEs (VSCode, WebStorm, etc.)
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs temporales
+*.log
+
+# Logs temporales
+*.sh

@@ -43,7 +43,9 @@ formulario-base-html-js-sass/
 │       ├── _variables.scss
 │       └── base.scss
 ├── index.html
+├── .gitignore
 ├── package.json
+├── README.md
 └── main.js
 
 

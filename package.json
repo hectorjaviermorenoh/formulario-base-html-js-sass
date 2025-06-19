@@ -1,16 +1,19 @@
 {
   "name": "formulario-base-html-js-sass",
   "version": "1.0.0",
-  "description": "Este repositorio contiene un formulario base responsive desarrollado con **HTML**, **JavaScript** y **Sass**. Está diseñado siguiendo las mejores prácticas de estructura semántica, validación de campos y accesibilidad, con el objetivo de servir como plantilla inicial para futuros formularios personalizados en proyectos web.",
+  "description": "Este repositorio contiene un formulario base responsive desarrollado con HTML, JavaScript y Sass. Está diseñado siguiendo las mejores prácticas de estructura semántica, validación de campos y accesibilidad, con el objetivo de servir como plantilla inicial para futuros formularios personalizados en proyectos web.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "sass": "sass styles/base.scss dist/style.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^30.0.0",
+    "jest": "^30.0.0",
     "sass": "^1.89.0"
   }
 }

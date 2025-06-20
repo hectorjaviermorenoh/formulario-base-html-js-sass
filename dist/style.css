@@ -130,6 +130,12 @@ a {
   min-height: 100vh;
   background-color: var(--color-bg);
 }
+.container .error-list {
+  color: red;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
 .h2-title {
   font-size: 2.2rem;

@@ -18,26 +18,43 @@
     );
   }
 
-
   // Allowed characters for name and lastName
-  let allowedCharacters  = new Set([' ','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']);
+  let allowedCharacters = new Set([
+  ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+  'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+  'á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú'
+  ]);
 
   /**
-   * Add a listener to validate the input of allowed characters.
-   * @param {HTMLInputElement} input - Campo de texto a validar
+   * Filters input value to only allow characters from the allowed set.
+   * Compatible with desktop and mobile.
+   * @param {HTMLInputElement} input
    */
-
-  // / Restrict keypress to allowed characters
   function validateAllowedCharacters(input) {
-    input.addEventListener('keypress', function(e) {
+    input.addEventListener('input', () => {
+      const filtered = [...input.value]
+        .filter(char => allowedCharacters.has(char.toLowerCase()))
+        .join('');
+      if (input.value !== filtered) {
+        input.value = filtered;
+      }
 
-        if (!allowedCharacters.has(e.key.toLowerCase())) {
-            e.preventDefault();
-        }
-
-        updateUIValidation()
+      updateUIValidation();
     });
   }
+
+  function validateAllowedCharacters(input) {
+    input.addEventListener('input', () => {
+      const filtered = [...input.value]
+        .filter(char => allowedCharacters.has(char.toLowerCase()))
+        .join('');
+      if (input.value !== filtered) {
+        input.value = filtered;
+      }
+
+      updateUIValidation();
+    });
+}
 
   ["name", "lastName"].forEach(fieldName => {
     if(form[fieldName]) {

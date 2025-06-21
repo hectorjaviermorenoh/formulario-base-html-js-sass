@@ -205,10 +205,14 @@ textarea::placeholder {
   color: #bbb;
 }
 
-input[type=checkbox]:disabled + label,
+input[type=checkbox]:disabled + label, button[type=submit]:disabled,
 .checkbox-grid label:has(input:disabled) {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+button[type=submit]:disabled {
+  background-color: rgba(0, 123, 255, 0) !important;
 }
 
 fieldset.form-group {

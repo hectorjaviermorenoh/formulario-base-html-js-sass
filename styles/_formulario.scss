@@ -88,10 +88,14 @@ textarea::placeholder {
 }
 
 // *********los checkboxes desactivados se vean más tenues:*************//
-input[type="checkbox"]:disabled + label,
+input[type="checkbox"]:disabled + label, button[type="submit"]:disabled,
 .checkbox-grid label:has(input:disabled) {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+button[type="submit"]:disabled {
+  background-color: #007bff00 !important;
 }
 
 

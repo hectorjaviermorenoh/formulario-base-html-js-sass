@@ -262,7 +262,72 @@
    */
   function updateUIValidation() {
     renderErrorList();
+    enableSubmitButtonIfInformationIsOk();
   }
+
+  // --- Field-level boolean validators ---
+  function nameIsValid() {
+    let name = form["name"];
+    return name.value.trim().length > 2;
+  }
+
+  function lastNameIsValid() {
+    let name = form["lastName"];
+    return name.value.trim().length > 2;
+  }
+
+  function emailIsValid() {
+    let emailInput = form["email"];
+    return emailInput.value.trim().length > 4;
+  }
+
+  function isPhoneValid() {
+    let phone = form["phone"];
+    return phone.value.length > 8;
+  }
+
+  function passwordIsValid() {
+    let password = form["password"];
+    return password.value.length > 4
+  }
+
+
+  function isCountryValid() {
+    let country = form["country"];
+    return country.value.length > 2;
+  }
+
+  function hobbiesAreValid() {
+    return hobbiesCounter > 0 && hobbiesCounter <= 4
+
+  }
+
+  // --- Check if all fields are valid ---
+  function informationIsOk() {
+
+    const isValid =
+      nameIsValid() &&
+      lastNameIsValid() &&
+      passwordIsValid() &&
+      isPhoneValid() &&
+      emailIsValid() &&
+      hobbiesAreValid() &&
+      isCountryValid();
+
+    return isValid;
+  }
+
+
+  // --- Enable or disable submit button ---
+  function enableSubmitButtonIfInformationIsOk() {
+
+    let submitButton = form["btnSubmit"];
+
+    informationIsOk() && renderErrorList() ? submitButton.removeAttribute('disabled') : submitButton.setAttribute('disabled', '');
+
+  }
+
+
 
 
 

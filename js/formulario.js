@@ -8,6 +8,9 @@
   // Get the form with name "mainForm"
   const form = document.forms["mainForm"];
 
+  // Only these countries are allowed as valid selections and must match the <option value="..."> entries in the HTML select element.
+  const allowedCountries  = ["colombia", "argentina", "chile", "peru", "mexico"];
+
   // Removes any error messages from the global error list that contain one or more specified keywords.
   function removeFieldErrors(fieldKeywords = []) {
     errorList = errorList.filter(err =>
@@ -150,6 +153,83 @@
     updateUIValidation()
 
   });
+
+  // --- Validate country input ---
+  form["country"].addEventListener("blur", () => {
+    const countryInput = form["country"];
+    const countryValue = countryInput.value.trim().toLowerCase();
+
+    // Removes errors containing the words "país"
+    removeFieldErrors(["país"]);
+
+    if (countryValue === "") {
+      errorList.push("Debe seleccionar un país de nacimiento.");
+    }
+
+    if (!allowedCountries.includes(countryValue)) {
+      errorList.push("El país seleccionado no es válido.");
+    }
+
+    updateUIValidation()
+
+  });
+
+  // --- Validate hobbies checkbox selection ---
+  const hobbyCheckboxes = form.querySelectorAll('input[name="hobbies"]');
+  const maxHobbies = 4;
+  let hobbiesCounter = 0;
+
+  hobbyCheckboxes.forEach(checkbox => {
+
+    checkbox.addEventListener("change", () => {
+
+      const checkedCount = Array.from(hobbyCheckboxes).filter(cb => cb.checked).length;
+      hobbiesCounter = checkedCount
+
+      if (checkedCount >= maxHobbies) {
+        hobbyCheckboxes.forEach(cb => {
+        if (!cb.checked) cb.disabled = true;
+      });
+      } else {
+        hobbyCheckboxes.forEach(cb => cb.disabled = false);
+      }
+
+      updateUIValidation()
+
+    });
+
+  });
+
+
+  // --- Validate description input ---
+  function validateDescripcionField() {
+    const descripcionInput = form["descripcion"];
+    const descripcionValue = sanitizeHTML(descripcionInput.value.trim());
+
+    descripcionInput.value = descripcionValue;
+
+    // Removes errors containing the words "descripción" or "opinion"
+    removeFieldErrors(["descripción", "opinion"]);
+
+    if (descripcionValue.length > 0 && descripcionValue.length < 20) {
+      errorList.push("La descripción debe contener al menos 20 caracteres o dejarse vacía.");
+    } else if (descripcionValue.length > 500) {
+      errorList.push("La descripción no puede superar los 500 caracteres.");
+    } else if (/^(.)\1+$/.test(descripcionValue)) {
+      errorList.push("El texto ingresado no parece válido.");
+    }
+  }
+
+  form["descripcion"].addEventListener("blur", () => {
+    validateDescripcionField();
+    updateUIValidation();
+  });
+
+  form["descripcion"].addEventListener("input", () => {
+    validateDescripcionField();
+    updateUIValidation();
+  });
+
 
     // --- Render error messages below the title ---
   function renderErrorList() {

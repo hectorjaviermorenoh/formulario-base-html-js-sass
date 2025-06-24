@@ -19,17 +19,6 @@
   }
 
   // Allowed characters for name and lastName
-  let allowedCharacters = new Set([
-  ' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-  'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-  'á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú'
-  ]);
-
-  /**
-   * Filters input value to only allow characters from the allowed set.
-   * Compatible with desktop and mobile.
-   * @param {HTMLInputElement} input
-   */
   function validateAllowedCharacters(input) {
     input.addEventListener('input', () => {
       const clean = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');

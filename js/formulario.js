@@ -32,29 +32,14 @@
    */
   function validateAllowedCharacters(input) {
     input.addEventListener('input', () => {
-      const filtered = [...input.value]
-        .filter(char => allowedCharacters.has(char.toLowerCase()))
-        .join('');
-      if (input.value !== filtered) {
-        input.value = filtered;
+      const clean = input.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+      if (input.value !== clean) {
+        input.value = clean;
       }
-
       updateUIValidation();
     });
   }
 
-  function validateAllowedCharacters(input) {
-    input.addEventListener('input', () => {
-      const filtered = [...input.value]
-        .filter(char => allowedCharacters.has(char.toLowerCase()))
-        .join('');
-      if (input.value !== filtered) {
-        input.value = filtered;
-      }
-
-      updateUIValidation();
-    });
-}
 
   ["name", "lastName"].forEach(fieldName => {
     if(form[fieldName]) {

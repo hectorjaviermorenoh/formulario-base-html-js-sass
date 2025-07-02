@@ -195,7 +195,7 @@
   // --- Validate description input ---
   function validateDescripcionField() {
     const descripcionInput = form["descripcion"];
-    const descripcionValue = sanitizeHTML(descripcionInput.value.trim());
+    const descripcionValue = sanitizeHTML(descripcionInput.value);
 
     descripcionInput.value = descripcionValue;
 
